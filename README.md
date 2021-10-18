@@ -5,4 +5,6 @@ Uses ethers random wallet generation to create a wallet. Then, we check its bala
 
 Initialize `.env` with a provider URL (Infura or Alchemy for example) and public address you want funds to go to. See `.envexample` for an example.
 
-Run `yarn` to install dependences. Then `yarn dev`. To stop, press `CTRL + C`
+Run `yarn setup` to install dependences and create the `./logs` folder. Then `yarn dev`. To stop, press `CTRL + C`. To clear logs, run `yarn clear`.
+
+Enjoy! 
