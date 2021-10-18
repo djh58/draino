@@ -1,3 +1,5 @@
 .env
+logs
 bin
 node_modules
+*.log
