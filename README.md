@@ -1,5 +1,5 @@
 # draino
-Drain crypto wallets that are randomly generated
+Drain crypto wallets that are randomly generated. Mining's a lot more efficient lol. 
 
 Uses ethers random wallet generation to create a wallet. Then, we check its balance, and if there is a balance we transfer it to the user-specified destination wallet. This runs continually in a while loop until the user stops. 
 
